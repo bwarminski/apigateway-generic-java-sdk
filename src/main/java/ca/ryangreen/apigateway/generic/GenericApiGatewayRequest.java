@@ -11,16 +11,16 @@ public class GenericApiGatewayRequest {
     private final String resourcePath;
     private final InputStream body;
     private final Map<String, String> headers;
-    private final Map<String, List<String>> parameters;
+    private final Map<String, List<String>> queryParameters;
 
     public GenericApiGatewayRequest(HttpMethodName httpMethod, String resourcePath,
                                     InputStream body, Map<String, String> headers,
-                                    Map<String, List<String>> parameters) {
+                                    Map<String, List<String>> queryParameters) {
         this.httpMethod = httpMethod;
         this.resourcePath = resourcePath;
         this.body = body;
         this.headers = headers;
-        this.parameters = parameters;
+        this.queryParameters = queryParameters;
     }
 
     public HttpMethodName getHttpMethod() {
@@ -39,7 +39,7 @@ public class GenericApiGatewayRequest {
         return headers;
     }
 
-    public Map<String, List<String>> getParameters() {
-        return parameters;
+    public Map<String, List<String>> getQueryParameters() {
+        return queryParameters;
     }
 }

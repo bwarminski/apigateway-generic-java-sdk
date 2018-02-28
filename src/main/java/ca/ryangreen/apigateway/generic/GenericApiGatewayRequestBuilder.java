@@ -13,7 +13,7 @@ public class GenericApiGatewayRequestBuilder {
     private String resourcePath;
     private InputStream body;
     private Map<String, String> headers;
-    private Map<String, List<String>> parameters = new LinkedHashMap<>();
+    private Map<String, List<String>> queryParameters = new LinkedHashMap<>();
 
     public GenericApiGatewayRequestBuilder withHttpMethod(HttpMethodName name) {
         httpMethod = name;
@@ -35,14 +35,14 @@ public class GenericApiGatewayRequestBuilder {
         return this;
     }
 
-    public GenericApiGatewayRequestBuilder withParameters(Map<String, List<String>> parameters) {
-        this.parameters = parameters;
+    public GenericApiGatewayRequestBuilder withQueryParameters(Map<String, List<String>> queryParameters) {
+        this.queryParameters = queryParameters;
         return this;
     }
 
     public GenericApiGatewayRequest build() {
         Validate.notNull(httpMethod, "HTTP method");
         Validate.notEmpty(resourcePath, "Resource path");
-        return new GenericApiGatewayRequest(httpMethod, resourcePath, body, headers, parameters);
+        return new GenericApiGatewayRequest(httpMethod, resourcePath, body, headers, queryParameters);
     }
 }

@@ -6,7 +6,6 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.auth.AWS4Signer;
 import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.http.AmazonHttpClient;
 import com.amazonaws.http.ExecutionContext;
 import com.amazonaws.http.HttpMethodName;
@@ -66,7 +65,7 @@ public class GenericApiGatewayClient extends AmazonWebServiceClient {
     }
 
     public GenericApiGatewayResponse execute(GenericApiGatewayRequest request) {
-        return execute(request.getHttpMethod(), request.getResourcePath(), request.getHeaders(), request.getParameters(), request.getBody());
+        return execute(request.getHttpMethod(), request.getResourcePath(), request.getHeaders(), request.getQueryParameters(), request.getBody());
     }
 
     private GenericApiGatewayResponse execute(HttpMethodName method, String resourcePath, Map<String, String> headers, Map<String, List<String>> parameters, InputStream content) {
